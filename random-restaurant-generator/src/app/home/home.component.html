@@ -1,0 +1,14 @@
+<form [formGroup]="restaurantForm">
+  <div>
+    <label for="restaurantName">Restaurant Name:</label>
+    <input type="text" id="restaurantName" formControlName="restaurantName">
+    <div *ngIf="restaurantForm.get('restaurantName')?.invalid && restaurantForm.get('restaurantName')?.touched" class="error-message">
+      Restaurant name is required and must be at least 3 characters long.
+    </div>
+  </div>
+  <button (click)="submit()" [disabled]="restaurantForm.invalid">Submit</button>
+
+  <button (click)="listRestaurant()">List Restaurant</button>
+
+  <button (click)="getRandomRestaurant()">Get Random Restaurant</button>
+</form>
