@@ -10,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   restaurantForm: FormGroup;
+  restaurantList: Restaurant[] = [];
+  draw: string = '';
 
   constructor(private service: HomeService, private formBuilder: FormBuilder) {
     this.restaurantForm = this.formBuilder.group({
@@ -18,6 +20,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.service.listRestaurant().subscribe((result) => {
+      console.log('restaurant list:', result);
+      this.restaurantList = result;
+    });
   }
 
   listRestaurant() {
@@ -29,6 +35,7 @@ export class HomeComponent implements OnInit {
   getRandomRestaurant() {
     this.service.getRandomRestaurant().subscribe((result) => {
       console.log("random restaurant: ", result);
+      this.draw = result;
     });
   }
 
@@ -43,4 +50,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
+}
+
+export interface Restaurant {
+  id: number;
+  name: string;
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Restaurant } from './home.component';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class HomeService {
     return this.httpClient.get(`${this.getRandomRestaurantUrl}`, { responseType: 'text' });
   }
 
-  listRestaurant(): Observable<string[]> {
-    return this.httpClient.get<string[]>(`${this.listRestaurantUrl}`);
+  listRestaurant(): Observable<Restaurant[]> {
+    return this.httpClient.get<Restaurant[]>(`${this.listRestaurantUrl}`);
   }
 }
