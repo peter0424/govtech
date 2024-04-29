@@ -1,3 +1,7 @@
 .container {
   padding: 3rem;
 }
+
+.result {
+  font-size: 3rem;
+}

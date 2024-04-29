@@ -21,16 +21,25 @@ public class RestaurantController {
 
     private final RestaurantService service;
 
+    /**
+     * add new restaurant
+     */
     @PostMapping("/add-restaurant")
     public void addRestaurant(@RequestBody @NotExists(message = "Restaurant name already exists!") String restaurantName) {
         service.addRestaurant(restaurantName);
     }
 
+    /**
+     * Get a random restaurant
+     */
     @GetMapping("/get-random-restaurant")
     public String getRandomRestaurant() {
         return service.getRandomRestaurant();
     }
 
+    /**
+     * Get restaurant list
+     */
     @GetMapping("/get-restaurant-list")
     public List<Restaurant> getRestaurantList() {
         return service.getRestaurantList();
